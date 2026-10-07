@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello Cutie 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#ff5f8f,#ff8fb3,#ffc1d6);display:flex;justify-content:center;align-items:center;overflow:hidden}
+.page{width:100%;min-height:100vh;display:none;justify-content:center;align-items:center;padding:25px;text-align:center}
+.page.active{display:flex}.card{width:100%;max-width:420px;padding:42px 25px;border-radius:32px;background:rgba(255,255,255,.20);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.45);box-shadow:0 20px 50px rgba(0,0,0,.20)}
+.heart{font-size:65px;animation:beat 1.1s infinite}.title{font-family:'Pacifico',cursive;color:white;font-size:38px;margin:15px 0}.subtitle{color:white;font-size:17px;line-height:1.7}
+.nextBtn{display:block;margin:30px auto 0;min-width:150px;padding:15px 25px;border:none;border-radius:50px;background:white;color:#ff4f81;font-size:18px;font-weight:700;cursor:pointer}
+.nameTitle{font-family:'Pacifico',cursive;color:white;font-size:32px;margin-bottom:20px}input{width:100%;padding:16px;border:none;outline:none;border-radius:18px;font-size:16px;text-align:center}.continueBtn{margin-top:18px;padding:14px 28px;border:none;border-radius:50px;background:white;color:#ff4f81;font-size:17px;font-weight:700}
+.message{color:white;font-family:'Pacifico',cursive;font-size:32px;line-height:1.6}.finalArrow{position:fixed;right:22px;bottom:25px;width:65px;height:65px;border:none;border-radius:50%;background:white;color:#ff4f81;font-size:30px;font-weight:bold;box-shadow:0 8px 25px rgba(0,0,0,.25)}
+.lastPage{background:#050505;color:white;overflow-y:auto;align-items:flex-start;padding:45px 22px}.lastBox{width:100%;max-width:430px;text-align:center}.lastTitle{font-family:Georgia,serif;font-size:36px;font-weight:400;margin:35px 0}.lastText{font-family:Georgia,serif;font-size:20px;line-height:1.45;color:#f5f5f5}.lastHeart{font-size:28px;margin:18px 0}.lastFooter{font-family:Georgia,serif;font-size:20px;margin-top:45px}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+</style>
+</head>
+<body>
+<audio id="loveSong" loop preload="auto">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+<section class="page active" id="page1"><div class="card"><div class="heart">💗</div><div class="title">Hello Cutie 💗</div><div class="subtitle">Ek chhota sa surprise hai<br>tumhare liye 🥺❤️</div><button class="nextBtn" onclick="startSurprise()">NEXT ➜</button></div></section>
+<section class="page" id="page2"><div class="card"><div class="heart">🥰</div><div class="nameTitle">Enter Your Name</div><input id="nameInput" type="text" placeholder="Your name..."><button class="continueBtn" onclick="showLove()">Continue ❤️</button></div></section>
+<section class="page" id="page3"><div class="card"><div class="heart">💗</div><div class="message">I really love you<br>bachha 💗</div></div></section>
+<section class="page" id="page4"><div class="card"><div class="heart">🥺</div><div class="message">Sorry Babu<br>maan jaoo na 😭</div></div><button class="finalArrow" onclick="showPage(5)">➜</button></section>
+<section class="page lastPage" id="page5"><div class="lastBox"><div class="lastTitle">I LOVE YOU 💗🥺</div><div class="lastText">No matter how many days pass, my feelings for you will always remain special.<br><br>I want to keep choosing you, supporting you and making beautiful memories with you.<br><br>You mean more to me than words can explain. Even when things aren't perfect, I will always care about you.<br><br>I don't want someone else. I just want the person who makes my heart feel at home.</div><div class="lastHeart">💗🥺💗</div><div class="lastFooter">Forever yours ❤️</div></div></section>
+<script>
+function startSurprise(){
+  const song=document.getElementById('loveSong');
+  song.play().catch(function(error){console.log('Music play blocked:',error)});
+  showPage(2);
+}
+function showPage(number){document.querySelectorAll('.page').forEach(function(page){page.classList.remove('active')});document.getElementById('page'+number).classList.add('active')}
+function showLove(){let name=document.getElementById('nameInput').value.trim();if(name===''){alert('Pehle apna naam likho ❤️');return}showPage(3);setTimeout(function(){showPage(4)},2000)}
+</script>
+</body>
+</html>
